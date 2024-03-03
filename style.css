@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+fieldset{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 20px auto;
+    
+}
+fieldset div{
+    margin: 10px;
+}
+label{
+    display: block;
+}
+#btn{
+    display: block;
+    margin: 5px auto;
+    padding: 5px 10px;
+}
+#book-shelf{
+    border: 1px solid black;
+    height: 60vh;
+    padding: 20px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+}

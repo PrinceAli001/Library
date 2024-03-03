@@ -5,16 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <label for="author">Author</label>
-    <input type="text" value="" id="author">
-    <label for="title">Title</label>
-    <input type="text" value="" id="title">
-    <label for="pages">Pages</label>
-    <input type="text" value="" id="pages">
-    <label for="read-status">Status</label>
-    <input type="text" value="" id="read-status">
-    <button id="btn">Submit</button>
+        <fieldset>
+            <legend>Book creation</legend>
+            <div>
+                <label for="author">Author</label>
+                <input type="text" id="author">
+            </div>
+            <div>
+                <label for="title">Title</label>
+                <input type="text" id="title">
+            </div>
+            <div>
+                <label for="pages">Pages</label>
+                <input type="text" id="pages">
+            </div>
+            <div>
+                <label for="read-status">Status</label>
+                <input type="text" id="read-status">
+            </div>
+            <button id="btn">Submit</button>
+        </fieldset>
+        <div id="book-shelf"></div>
 </body>
 </html>
