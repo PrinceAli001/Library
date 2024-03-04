@@ -4,6 +4,8 @@ let inputPages = document.querySelector('#pages')
 let inputStatus = document.querySelector('#read-status')
 let btn = document.querySelector('#btn')
 let bookShelf = document.querySelector('#book-shelf')
+let newBook = document.querySelector('#new-book')
+let dialog = document.querySelector('dialog')
 
 
 const myLibrary = [];
@@ -29,7 +31,8 @@ function addBookToLibrary() {
 
     inputText.focus()    
 
-    btn.addEventListener('click',function () {
+    btn.addEventListener('click',function (event) {
+      event.preventDefault()
       let book = new books(`${title.value}`,`${author.value}`,`${pages.value}`,`${readStatus.value}`)
 
       myLibrary.push(book)
@@ -67,3 +70,8 @@ function addBookToLibrary() {
     })
 }
 addBookToLibrary()
+
+
+newBook.addEventListener('click', () => {
+  dialog.showModal()
+})
