@@ -23,7 +23,6 @@ label{
     padding: 5px 10px;
 }
 #book-shelf{
-    border: 1px solid black;
     height: 60vh;
     padding: 20px 40px;
     display: flex;

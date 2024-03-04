@@ -33,37 +33,37 @@ function addBookToLibrary() {
       let book = new books(`${title.value}`,`${author.value}`,`${pages.value}`,`${readStatus.value}`)
 
       myLibrary.push(book)
-      console.log(myLibrary)
-      myLibrary.forEach((element) => {
-        let card = document.createElement('div')
-        card.setAttribute('style','border: 1px solid black; width: 150px; height: fit-content; border-radius: 5px; box-shadow: 2px 2px 5px black; padding: 10px;')
+      function makecard () {
+          let card = document.createElement('div')
+          card.setAttribute('style','border: 1px solid black; width: 165px; height: fit-content; border-radius: 5px; box-shadow: 1px 1px 3px black;')
 
-        let pictureHolder = document.createElement('div')
-        pictureHolder.setAttribute('style','border: 1px solid black; height: 100px;')
+          let pictureHolder = document.createElement('div')
+          pictureHolder.setAttribute('style','border: 1px solid black; height: 120px;')
 
-        let pTitle = document.createElement('p')
-        pTitle.setAttribute('style','margin: 5px;')
-        pTitle.textContent = `Title: ${book.title}`
+          let pTitle = document.createElement('p')
+          pTitle.setAttribute('style','margin: 5px;')
+          pTitle.textContent = `Title: ${book.title}`
 
-        let pAuthor = document.createElement('p')
-        pAuthor.setAttribute('style','margin: 5px;')
-        pAuthor.textContent = `Author: ${book.author}`
+          let pAuthor = document.createElement('p')
+          pAuthor.setAttribute('style','margin: 5px;')
+          pAuthor.textContent = `Author: ${book.author}`
 
-        let pPages = document.createElement('p')
-        pPages.setAttribute('style','margin: 5px;')
-        pPages.textContent = `Pages: ${book.noOfPages}`
+          let pPages = document.createElement('p')
+          pPages.setAttribute('style','margin: 5px;')
+          pPages.textContent = `Pages: ${book.noOfPages}`
 
-        let pStatus = document.createElement('p')
-        pStatus.setAttribute('style','margin: 5px;')
-        pStatus.textContent = `Status: ${book.status()}`
+          let pStatus = document.createElement('p')
+          pStatus.setAttribute('style','margin: 5px;')
+          pStatus.textContent = `Status: ${book.status()}`
 
-        card.appendChild(pictureHolder)
-        card.appendChild(pTitle)
-        card.appendChild(pAuthor)
-        card.appendChild(pPages)
-        card.appendChild(pStatus)
-        bookShelf.appendChild(card)
-      })
+          card.appendChild(pictureHolder)
+          card.appendChild(pTitle)
+          card.appendChild(pAuthor)
+          card.appendChild(pPages)
+          card.appendChild(pStatus)
+          bookShelf.appendChild(card)
+      }
+      makecard()
     })
 }
 addBookToLibrary()
