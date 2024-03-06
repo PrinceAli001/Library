@@ -56,3 +56,19 @@ label{
     color: #008000;
     border: 1px solid #008000;
 }
+.red-button{
+    display: block;
+    border: 1px solid;
+    border-radius: 2px;
+    background-color: #ff0000;
+    color: #ffffff;
+    margin: 10px 0 10px auto;
+    padding: 2px 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.red-button:active{
+    background-color: #ffffff;
+    border: 1px solid #ff0000;
+    color: #ff0000;
+}

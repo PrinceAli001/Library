@@ -6,6 +6,7 @@ let btn = document.querySelector('#btn')
 let bookShelf = document.querySelector('#book-shelf')
 let newBook = document.querySelector('#new-book')
 let dialog = document.querySelector('dialog')
+let currentBookNumber = 0;
 
 
 const myLibrary = [];
@@ -37,11 +38,21 @@ function addBookToLibrary() {
 
       myLibrary.push(book)
       function makecard () {
+          let containerDiv = document.createElement('div')
+          containerDiv.setAttribute('style','height: fit-content; width: fit-content;')
+
+          let cancelBtn = document.createElement('button')
+          cancelBtn.textContent = 'x'
+          cancelBtn.classList.add('red-button')
+          cancelBtn.addEventListener('click', () => {
+            bookShelf.removeChild(containerDiv)
+          })
+
           let card = document.createElement('div')
           card.setAttribute('style','border: 1px solid black; width: 165px; height: fit-content; border-radius: 5px; box-shadow: 1px 1px 3px black;')
 
           let pictureHolder = document.createElement('div')
-          pictureHolder.setAttribute('style','border: 1px solid black; height: 120px;')
+          pictureHolder.setAttribute('style','background-image: url(images/book.gif); background-position: center; background-size: contain; border: 1px solid black; height: 120px;')
 
           let pTitle = document.createElement('p')
           pTitle.setAttribute('style','margin: 5px;')
@@ -59,12 +70,16 @@ function addBookToLibrary() {
           pStatus.setAttribute('style','margin: 5px;')
           pStatus.textContent = `Status: ${book.status()}`
 
+          
+
           card.appendChild(pictureHolder)
           card.appendChild(pTitle)
           card.appendChild(pAuthor)
           card.appendChild(pPages)
           card.appendChild(pStatus)
-          bookShelf.appendChild(card)
+          containerDiv.appendChild(cancelBtn)
+          containerDiv.appendChild(card)
+          bookShelf.appendChild(containerDiv)
       }
       makecard()
     })
