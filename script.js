@@ -6,7 +6,6 @@ let btn = document.querySelector('#btn')
 let bookShelf = document.querySelector('#book-shelf')
 let newBook = document.querySelector('#new-book')
 let dialog = document.querySelector('dialog')
-let currentBookNumber = 0;
 
 
 const myLibrary = [];
@@ -24,6 +23,7 @@ function books(title,author,noOfPages,status) {
     }
 }
 
+
 function addBookToLibrary() {
     let author = inputText
     let title = inputTitle
@@ -40,12 +40,17 @@ function addBookToLibrary() {
       function makecard () {
           let containerDiv = document.createElement('div')
           containerDiv.setAttribute('style','height: fit-content; width: fit-content;')
+          containerDiv.setAttribute('data-number',`${myLibrary.indexOf(book)}`)
 
-          let cancelBtn = document.createElement('button')
-          cancelBtn.textContent = 'x'
-          cancelBtn.classList.add('red-button')
-          cancelBtn.addEventListener('click', () => {
+          let cancel = document.createElement('button')
+          cancel.textContent = 'x'
+          cancel.classList.add('red-button')
+          cancel.addEventListener('click', () => {
             bookShelf.removeChild(containerDiv)
+            myLibrary.splice(containerDiv.dataset.number,1)
+            if (bookShelf.textContent == '') {
+              myLibrary.pop()
+            }
           })
 
           let card = document.createElement('div')
@@ -70,16 +75,16 @@ function addBookToLibrary() {
           pStatus.setAttribute('style','margin: 5px;')
           pStatus.textContent = `Status: ${book.status()}`
 
-          
 
           card.appendChild(pictureHolder)
           card.appendChild(pTitle)
           card.appendChild(pAuthor)
           card.appendChild(pPages)
           card.appendChild(pStatus)
-          containerDiv.appendChild(cancelBtn)
+          containerDiv.appendChild(cancel)
           containerDiv.appendChild(card)
           bookShelf.appendChild(containerDiv)
+
       }
       makecard()
     })
