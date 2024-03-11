@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>THE GREAT BOOKERY</h1>
     <button id="new-book">NEW BOOK</button>
     <dialog>
           <form>
@@ -25,8 +26,11 @@
                   <input type="text" id="pages">
               </div>
               <div>
-                  <label for="read-status">Status</label>
-                  <input type="text" id="read-status">
+                  <label for="status">Status of the book</label>
+                 <div>
+                    <input type="radio" name="status" value="Read" id="read-status-one"> Read
+                    <input type="radio" name="status" value="Not Read" id="read-status-two"> Not read
+                 </div>
               </div>
                 <button id="btn">Submit</button>
           </form>

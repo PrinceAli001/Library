@@ -1,7 +1,8 @@
 let inputText = document.querySelector('#author')
 let inputTitle = document.querySelector('#title')
 let inputPages = document.querySelector('#pages')
-let inputStatus = document.querySelector('#read-status')
+let inputStatusOne = document.querySelector('#read-status-one')
+let inputStatusTwo = document.querySelector('#read-status-two')
 let btn = document.querySelector('#btn')
 let bookShelf = document.querySelector('#book-shelf')
 let newBook = document.querySelector('#new-book')
@@ -11,12 +12,12 @@ let dialog = document.querySelector('dialog')
 const myLibrary = [];
 
 
-function books(title,author,noOfPages,status) {
+function books(title,author,noOfPages) {
     this.title = title;
     this.author = author;
     this.noOfPages = noOfPages;
     this.status = function () {
-      return (status == 'true') ? 'has been read' : 'not yet read';
+      return (inputStatusOne.checked) ? 'has been read' : 'not yet read';
     };
     this.info = function () {
         return `${this.title} by ${this.author}, ${this.noOfPages} pages, ${this.status()}`;
@@ -28,13 +29,11 @@ function addBookToLibrary() {
     let author = inputText
     let title = inputTitle
     let pages = inputPages
-    let readStatus = inputStatus
-
-    inputText.focus()    
+   
 
     btn.addEventListener('click',function (event) {
       event.preventDefault()
-      let book = new books(`${title.value}`,`${author.value}`,`${pages.value}`,`${readStatus.value}`)
+      let book = new books(`${title.value}`,`${author.value}`,`${pages.value}`)
 
       myLibrary.push(book)
       function makecard () {
@@ -54,7 +53,7 @@ function addBookToLibrary() {
           })
 
           let card = document.createElement('div')
-          card.setAttribute('style','border: 1px solid black; width: 165px; height: fit-content; border-radius: 5px; box-shadow: 1px 1px 3px black;')
+          card.setAttribute('style','border: 1px solid black; width: 165px; height: fit-content; border-radius: 5px; box-shadow: 1px 1px 3px black; background-color: #c0c0c0;')
 
           let pictureHolder = document.createElement('div')
           pictureHolder.setAttribute('style','background-image: url(images/book.gif); background-position: center; background-size: contain; border: 1px solid black; height: 120px;')
@@ -71,10 +70,26 @@ function addBookToLibrary() {
           pPages.setAttribute('style','margin: 5px;')
           pPages.textContent = `Pages: ${book.noOfPages}`
 
-          let pStatus = document.createElement('p')
-          pStatus.setAttribute('style','margin: 5px;')
-          pStatus.textContent = `Status: ${book.status()}`
-
+          let pStatus = document.createElement('button')
+          pStatus.classList.add('green-btn')
+          if (inputStatusOne.checked) {
+            pStatus.textContent = 'Read'
+          } else {
+            pStatus.textContent = 'Not Read'
+            pStatus.classList.add('red-button')
+            pStatus.setAttribute('style','margin: 20px auto; border-radius: 5px; padding: 5px 15px;')
+          }
+          pStatus.addEventListener('click',() => {
+            if ( pStatus.textContent == 'Read') {
+              pStatus.textContent = 'Not Read'
+              pStatus.classList.add('red-button')
+              pStatus.setAttribute('style','margin: 20px auto; border-radius: 5px; padding: 5px 15px;')
+            } else {
+              pStatus.textContent = 'Read'
+              pStatus.classList.remove('red-button')
+              pStatus.classList.add('green-btn')
+            }
+          })
 
           card.appendChild(pictureHolder)
           card.appendChild(pTitle)
