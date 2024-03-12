@@ -7,6 +7,7 @@ let btn = document.querySelector('#btn')
 let bookShelf = document.querySelector('#book-shelf')
 let newBook = document.querySelector('#new-book')
 let dialog = document.querySelector('dialog')
+let x = document.querySelector('#x')
 
 
 const myLibrary = [];
@@ -109,4 +110,7 @@ addBookToLibrary()
 
 newBook.addEventListener('click', () => {
   dialog.showModal()
+})
+x.addEventListener('click', () => {
+  dialog.close()
 })

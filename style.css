@@ -11,6 +11,15 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+#x{
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 2px 8px;
+    margin-left: auto;
+    margin-right: 3px;
+    font-size: 20px;
+}
 h1{
     padding: 20px;
     color: #ffffff;
@@ -24,7 +33,6 @@ dialog{
     outline: none;
     border: 1px solid #000000;
     border-radius: 4px;
-    padding-top: 10px;
 }
 ::backdrop{
     opacity: 0.7;
@@ -41,6 +49,13 @@ input{
     border: 1px solid #c0c0c0;
     height: 25px;
     padding-left: 10px;
+}
+input:active{
+    outline: blue;
+    border: 1px solid #0000ff;
+}
+input:focus{
+    border: 1px solid #0000ff;
 }
 form > div + div + div + div div{
     display: flex;
