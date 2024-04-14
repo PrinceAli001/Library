@@ -8,19 +8,20 @@ let bookShelf = document.querySelector('#book-shelf')
 let newBook = document.querySelector('#new-book')
 let dialog = document.querySelector('dialog')
 let x = document.querySelector('#x')
-
-
 const myLibrary = [];
 
 
-function books(title,author,noOfPages) {
+class books {
+  constructor(title,author,noOfPages){
     this.title = title;
     this.author = author;
     this.noOfPages = noOfPages;
-    this.status = function () {
+  }
+   
+    status() {
       return (inputStatusOne.checked) ? 'has been read' : 'not yet read';
     };
-    this.info = function () {
+    info() {
         return `${this.title} by ${this.author}, ${this.noOfPages} pages, ${this.status()}`;
     }
 }
