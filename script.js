@@ -49,6 +49,7 @@ function addBookToLibrary() {
           cancel.addEventListener('click', () => {
             bookShelf.removeChild(containerDiv)
             myLibrary.splice(containerDiv.dataset.number,1)
+            containerDiv.setAttribute('data-number',`${myLibrary.indexOf(book)}`)
             if (bookShelf.textContent == '') {
               myLibrary.pop()
             }
