@@ -8,6 +8,9 @@ let bookShelf = document.querySelector('#book-shelf')
 let newBook = document.querySelector('#new-book')
 let dialog = document.querySelector('dialog')
 let x = document.querySelector('#x')
+let paraOne = document.querySelector('#para1');
+let paraTwo = document.querySelector('#para2');
+let paraThree = document.querySelector('#para3');
 const myLibrary = [];
 
 
@@ -49,10 +52,7 @@ function addBookToLibrary() {
           cancel.addEventListener('click', () => {
             bookShelf.removeChild(containerDiv)
             myLibrary.splice(containerDiv.dataset.number,1)
-            containerDiv.setAttribute('data-number',`${myLibrary.indexOf(book)}`)
-            if (bookShelf.textContent == '') {
-              myLibrary.pop()
-            }
+            containerDiv.setAttribute('data-number',`${myLibrary.indexOf(book)}`);
           })
 
           let card = document.createElement('div')
@@ -107,6 +107,37 @@ function addBookToLibrary() {
       makecard()
     })
 }
+
+function checkError(input,para){
+    if (input.validity.valueMissing) {
+        showError(para,'error1',input);
+    } else if(input.validity.tooShort) {
+        showError(para,'error2',input);
+    } else if(input.validity.tooLong) {
+        showError(para,'error3',input)
+    }
+}
+
+function showError(paragraph,errortype,input){
+    if ((paragraph === paraOne
+        && errortype === 'error1')
+      ||
+        (paragraph === paraTwo
+        && errortype === 'error1')) {
+      paragraph.textContent = 'Enter the required text';
+      paragraph.classList.add('error');
+    } else if((paragraph === paraOne
+      && errortype === 'error2'
+      && input.value.length < 3)
+    ||
+      (paragraph === paraTwo
+      && errortype === 'error2'
+      && input.value.length < 3)) {
+        paragraph.textContent = 'Text is too short, minimum of 3 characters required';
+        paragraph.classList.add('error');
+      }
+}
+
 addBookToLibrary()
 
 
@@ -116,3 +147,19 @@ newBook.addEventListener('click', () => {
 x.addEventListener('click', () => {
   dialog.close()
 })
+inputText.addEventListener('input', () => {
+  if (inputText.validity.valid) {
+    paraOne.textContent = '';
+    paraOne.classList.remove('error');
+  } else {
+    checkError(inputText,paraOne);
+  }
+});
+inputTitle.addEventListener('input', () => {
+  if (inputTitle.validity.valid) {
+    paraTwo.textContent = '';
+    paraTwo.classList.remove('error');
+  } else {
+    checkError(inputTitle,paraTwo);
+  }
+});

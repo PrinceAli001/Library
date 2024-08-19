@@ -57,6 +57,14 @@ input:active{
 input:focus{
     border: 1px solid #0000ff;
 }
+.error{
+    color: #ffffff;
+    background-color: #ff0000;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    padding: 5px;
+    width: 190px;
+}
 form > div + div + div + div div{
     display: flex;
     align-items: center;
